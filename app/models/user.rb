@@ -4,8 +4,8 @@ class User < ApplicationRecord
   has_many :offers, dependent: :destroy
   has_many :bookings, through: :offers
 
-  validates :username, presence: true, uniqueness: true
-  validates :address, presence: true
+  # validates :username, presence: true, uniqueness: true
+  # validates :address, presence: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
