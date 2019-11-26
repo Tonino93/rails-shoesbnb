@@ -13,7 +13,6 @@ puts "Cleaning Database ..."
 
 User.destroy_all
 Offer.destroy_all
-Booking.destroy_all
 
 puts "Start Seeding ..."
 
