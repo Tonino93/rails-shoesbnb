@@ -1,6 +1,8 @@
 class Offer < ApplicationRecord
   belongs_to :user
-  CATEGORIES = ["sneakers"]
+  has_many :bookings, dependent: :destroy
+
+  CATEGORIES = ["Sneakers", "Boots", "Heels"]
 
   validates :brand, presence: true
   validates :description, presence: true
