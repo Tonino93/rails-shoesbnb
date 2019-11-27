@@ -1,4 +1,5 @@
 <ul>
+  <%= cl_image_tag @offer.photo, height: 300, width: 400, crop: :fill %>
   <li><%= @offer.brand %></li>
   <li><%= @offer.description %></li>
   <li><%= @offer.category %></li>
