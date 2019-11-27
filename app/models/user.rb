@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :address, presence: true
+  mount_uploader :photo, PhotoUploader
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
