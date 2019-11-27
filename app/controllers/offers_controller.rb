@@ -6,6 +6,8 @@ class OffersController < ApplicationController
 
   def show
     @offer = Offer.find(params[:id])
+    user_signed_in?
+    @booking = Booking.new
   end
 
   def new
@@ -44,6 +46,6 @@ class OffersController < ApplicationController
   end
 
   def offers_params
-    params.require(:offer).permit(:brand, :description, :category, :size, :color, :price_per_day)
+    params.require(:offer).permit(:brand, :description, :category, :size, :color, :price_per_day, :photo)
   end
 end

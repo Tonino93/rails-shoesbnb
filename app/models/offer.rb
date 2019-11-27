@@ -10,4 +10,5 @@ class Offer < ApplicationRecord
   validates :size, presence: true
   validates :color, presence: true
   validates :price_per_day, presence: true
+  mount_uploader :photo, PhotoUploader
 end
