@@ -1,3 +1,10 @@
-<% @offers.each do |offer| %>
-<li><%= link_to (cl_image_tag offer.photo, height: 300, width: 400, crop: :fill), offer_path(offer) %></li>
-<% end %>
+<div class="container ">
+  <h2>Notre selection du jour</h2>
+  <div class="row justify-content-center">
+    <div class="card-shoes col-12 col-md4 border-rounded">
+        <% @offers.each do |offer| %>
+      <%= link_to (cl_image_tag offer.photo, height: 200, width: 200, crop: :fill), offer_path(offer) %>
+      <% end %>
+    </div>
+  </div>
+</div>
