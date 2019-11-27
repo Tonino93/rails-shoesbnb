@@ -8,8 +8,13 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to dashboard_path
     else
-      render :new
+      render "offers/show"
     end
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to offers_path
   end
 
   def bookings_params
