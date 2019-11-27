@@ -7,19 +7,35 @@
   <div class="flexbox">
     <div class="box">
         <p>ALL BOOKINGS</p>
+        <h2>Ce que je loue</h2>
+        <% @offers.each do |offer|%>
+        <li><%= link_to (cl_image_tag offer.photo, height: 200, width: 200, crop: :fill) %></li>
+        <% end %>
     </div>
 
     <div class="box" >
         <p>MY BOOKINGS</p>
+        <h2>Ce qu'on réserve</h2>
+        <% @bookings.each do |booking|%>
+          <li><%= link_to (cl_image_tag booking.offer.photo, height: 200, width: 200, crop: :fill) %></li>
+          Date de début
+          <li><%= booking.start_date %></li>
+          Date de fin
+          <li><%= booking.end_date %></li>
+        <% end %>
     </div>
 
     <div class="box" >
         <p>DEMAND BOOKINGS</p>
+        <h2>Ce que je réserve</h2>
+        <% @mybookings.each do |booking|%>
+          <li><%= link_to (cl_image_tag booking.photo, height: 200, width: 200, crop: :fill) %></li>
+          Date de début
+          <li><%= booking.start_date %></li>
+          Date de fin
+          <li><%= booking.end_date %></li>
+        <% end %>
     </div>
   </div>
 </div>
-
-
-
-
 
