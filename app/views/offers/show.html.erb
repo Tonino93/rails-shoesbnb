@@ -13,3 +13,5 @@
 <%= link_to "Delete", offer_path, method: :delete, data: { confirm: "Sur to delete?" }, class: 'btn btn-primary'%>
 <% end %>
 <%= link_to "Back to list", offers_path, class: 'btn btn-primary'%>
+
+<%= render "bookings/form", booking: @booking %>
