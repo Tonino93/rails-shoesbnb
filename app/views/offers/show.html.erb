@@ -1,17 +1,30 @@
-<ul>
-  <%= cl_image_tag @offer.photo, height: 300, width: 400, crop: :fill %>
-  <li><%= @offer.brand %></li>
-  <li><%= @offer.description %></li>
-  <li><%= @offer.category %></li>
-  <li><%= @offer.size %></li>
-  <li><%= @offer.color %></li>
-  <li><%= @offer.price_per_day %></li>
-</ul>
-
+<div class="container">
+  <h2> <%=  @offer.description %></h2> <!-- il faut ajouter un nom a notre offer !!! -->
+  <div class=" d-flex justify-content-around align-items-center">
+    <div class="section">
+      <%= cl_image_tag @offer.photo, height: 400, width: 400, crop: :fill %>
+    </div>
+    <div class="section2">
+      <ul>
+        <li>Brand : <%= @offer.brand %></li>
+        <li>Category : <%= @offer.category %></li>
+        <li>Size : <%= @offer.size %></li>
+        <li>Color : <%= @offer.color %></li>
+        <li>Description : <br> <%= @offer.description %></li>
+      </ul>
+    </div>
+    <div class="section3">
+      <%= cl_image_tag current_user.photo, class: ".avatar-offer" %>
+      <h3>Price : <%= @offer.price_per_day %> per day</h3>
+      <%= render "bookings/form", booking: @booking %>
+    </div>
+  </div>
+  <div class=" d-flex justify-content-center">
+    <%= link_to "Back to list", offers_path, class: 'btn btn-primary'%>
+  </div>
+</div>
+<!-- Mettre sur le dasboard -->
 <% if(@offer.user == current_user) %>
 <%= link_to "Update", edit_offer_path, class: 'btn btn-primary'%>
 <%= link_to "Delete", offer_path, method: :delete, data: { confirm: "Sur to delete?" }, class: 'btn btn-primary'%>
 <% end %>
-<%= link_to "Back to list", offers_path, class: 'btn btn-primary'%>
-
-<%= render "bookings/form", booking: @booking %>
