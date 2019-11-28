@@ -3,7 +3,7 @@
   <div class="d-flex mt-2"><div class="ml-5"><%= link_to cl_image_tag current_user.photo, height: 100, width: 100, crop: :fill%></div><div class="d-flex ml-2 mt-4"><h1>Bienvenue</h1><h1 class="ml-2" style="color: #D4AF37"><%= current_user.username %></h1></div></div>
   <div class="flexbox mt-4">
     <div class="box">
-        <h3>Mes annonces</h3>
+        <h3>Mes locations</h3>
         <% @bookings.each do |booking|%>
         <div class="card-product">
           <li><%= link_to (cl_image_tag booking.offer.photo, height: 100, width: 100, crop: :fill), offer_path(booking) %></li>
@@ -20,18 +20,20 @@
         <h3>Mes réservations</h3>
         <% @mybookings.each do |mybooking|%>
         <div class="card-product">
-          <li><%= link_to (cl_image_tag mybooking.offer.photo, height: 100, width: 100, crop: :fill), offer_path(mybooking) %></li>
+          <li><%= link_to (cl_image_tag mybooking.offer.photo, height: 100, width: 100, crop: :fill), offer_path(mybooking.offer) %></li>
           <div class="card-product-infos">
               <h2><%= mybooking.user.username %></h2>
               <p>Date de début : <%= mybooking.start_date %></p>
               <p>Date de fin : <%= mybooking.end_date %></p>
+              <p>(<%= mybooking.total_price%>)</p>
+              <p> <%= (mybooking.end_date - mybooking.start_date).to_i %> Days</p>
           </div>
         </div>
         <% end %>
     </div>
 
     <div class="box">
-        <h3>Mes demandes</h3>
+        <h3>Mes chaussures</h3>
         <% @offers.each do |offer|%>
         <div class="card-product">
           <li><%= link_to (cl_image_tag offer.photo, height: 100, width: 100, crop: :fill), offer_path(offer) %></li>
