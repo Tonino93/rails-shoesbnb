@@ -1,4 +1,5 @@
 <%= simple_form_for(@offer) do |f| %>
+  <%= f.input :name %>
   <%= f.input :brand %>
   <%= f.input :description %>
   <%= f.input :category, collection: Offer::CATEGORIES %>
