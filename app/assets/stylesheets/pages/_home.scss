@@ -4,5 +4,13 @@
   background-repeat: no-repeat;
   height:100vh;
 }
-
+#banner-typed-text{
+  font-size: 40px;
+  color:$gris;
+  display:flex;
+  justify-content:flex-end;
+  padding:40px;
+  font-family:montserrat;
+  font-weight:bold;
+}
 
