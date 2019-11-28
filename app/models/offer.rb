@@ -4,6 +4,7 @@ class Offer < ApplicationRecord
 
   CATEGORIES = ["Sneakers", "Boots", "Heels"]
 
+  validates :name, presence: true
   validates :brand, presence: true
   validates :description, presence: true
   validates :category, presence: true, inclusion: { in: CATEGORIES }

@@ -5,10 +5,31 @@ class BookingsController < ApplicationController
     @booking.offer = @offer
     @user = current_user
     @booking.user = @user
-    if @booking.save
+    @booking.total_price = booking_total_price
+    offer = Offer.find(params[:offer_id])
+    bookings = []
+    bookings = Booking.where(offer: offer)
+    if bookings == []
+      raise
+      @booking.save
       redirect_to dashboard_path
     else
-      render "offers/show"
+      bookings.each do |booking|
+        if ((@booking.start_date < booking.start_date && @booking.end_date < booking.start_date) || (@booking.start_date > booking.end_date && @booking.end_date > booking.end_date))
+          @booking.save
+          return redirect_to dashboard_path
+        else
+          flash[:notice] = "Ces dates sont déjà réservées"
+          return redirect_to offer_path(offer)
+        end
+      end
+    end
+  end
+
+  def booking_total_price
+    if @booking.start_date != nil && @booking.end_date != nil
+      @days = (@booking.end_date - @booking.start_date).to_i
+      @booking.total_price = @days * @booking.offer.price_per_day
     end
   end
 
