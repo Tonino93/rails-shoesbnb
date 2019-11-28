@@ -1,11 +1,11 @@
 class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_offer, only: [:show, :edit, :update, :destroy]
   def index
     @offers = Offer.all
   end
 
   def show
-    @offer = Offer.find(params[:id])
     user_signed_in?
     @booking = Booking.new
   end
@@ -26,11 +26,9 @@ class OffersController < ApplicationController
   end
 
   def edit
-    @offer = Offer.find(params[:id])
   end
 
   def update
-    @offer = Offer.find(params[:id])
     @offer.update(offers_params)
     if @offer.save
       redirect_to offer_path(@offer)
@@ -40,9 +38,12 @@ class OffersController < ApplicationController
   end
 
   def destroy
-    @offer = Offer.find(params[:id])
     @offer.destroy
     redirect_to offers_path
+  end
+
+  def set_offer
+    @offer = Offer.find(params[:id])
   end
 
   def offers_params

@@ -8,34 +8,42 @@
     <div class="box">
         <p>ALL BOOKINGS</p>
         <h2>Ce que je loue</h2>
-        <% @offers.each do |offer|%>
-        <li><%= link_to (cl_image_tag offer.photo, height: 200, width: 200, crop: :fill) %></li>
+        <% @bookings.each do |booking|%>
+          <% if Time.now < booking.end_date %>
+            <li><%= link_to (cl_image_tag booking.offer.photo, height: 100, width: 100, crop: :fill), offer_path(booking) %></li>
+            Username : <li><%= booking.user.username %></li>
+            Date de début
+            <li><%= booking.start_date %></li>
+            Date de fin
+            <li><%= booking.end_date %></li>
+          <% end %>
         <% end %>
     </div>
 
     <div class="box" >
         <p>MY BOOKINGS</p>
-        <h2>Ce qu'on réserve</h2>
-        <% @bookings.each do |booking|%>
-          <li><%= link_to (cl_image_tag booking.offer.photo, height: 200, width: 200, crop: :fill) %></li>
-          Date de début
-          <li><%= booking.start_date %></li>
-          Date de fin
-          <li><%= booking.end_date %></li>
+        <h2>Ce qu'on me loue</h2>
+        <% @mybookings.each do |mybooking|%>
+          <% if Time.now < mybooking.end_date %>
+            <li><%= link_to (cl_image_tag mybooking.offer.photo, height: 100, width: 100, crop: :fill), offer_path(mybooking) %></li>
+  <!--           <li><%= mybooking.user.username %></li> -->
+            Date de début
+            <li><%= mybooking.start_date %></li>
+            Date de fin
+            <li><%= mybooking.end_date %></li>
+          <% end %>
         <% end %>
     </div>
 
-    <div class="box" >
+   <div class="box" >
         <p>DEMAND BOOKINGS</p>
-        <h2>Ce que je réserve</h2>
-        <% @mybookings.each do |booking|%>
-          <li><%= link_to (cl_image_tag booking.photo, height: 200, width: 200, crop: :fill) %></li>
-          Date de début
-          <li><%= booking.start_date %></li>
-          Date de fin
-          <li><%= booking.end_date %></li>
+        <h2>Ce que je propose</h2>
+        <% @offers.each do |offer|%>
+          <li><%= link_to (cl_image_tag offer.photo, height: 100, width: 100, crop: :fill), offer_path(offer) %></li>
+          <%= link_to "Update", edit_offer_path(offer), class: 'btn btn-primary'%>
+          <%= link_to "Delete", offer_path(offer), method: :delete, data: { confirm: "Sur to delete?" }, class: 'btn btn-primary'%>
         <% end %>
-    </div>
+   </div>
   </div>
 </div>
 
