@@ -23,8 +23,3 @@
     <%= link_to "Back to list", offers_path, class: 'btn btn-primary'%>
   </div>
 </div>
-<!-- Mettre sur le dasboard -->
-<% if(@offer.user == current_user) %>
-<%= link_to "Update", edit_offer_path, class: 'btn btn-primary'%>
-<%= link_to "Delete", offer_path, method: :delete, data: { confirm: "Sur to delete?" }, class: 'btn btn-primary'%>
-<% end %>

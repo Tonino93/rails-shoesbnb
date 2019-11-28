@@ -37,6 +37,7 @@
         <h2>Ce que je propose</h2>
         <% @offers.each do |offer|%>
           <li><%= link_to (cl_image_tag offer.photo, height: 100, width: 100, crop: :fill), offer_path(offer) %></li>
+          <%= link_to "Update", edit_offer_path(offer), class: 'btn btn-primary'%>
           <%= link_to "Delete", offer_path(offer), method: :delete, data: { confirm: "Sur to delete?" }, class: 'btn btn-primary'%>
         <% end %>
     </div>
