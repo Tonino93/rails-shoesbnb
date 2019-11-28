@@ -1,0 +1,32 @@
+body {
+  background-color: $or;
+}
+
+.container{
+  height: 700px;
+ }
+
+
+.flexbox {
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  align-item: center;
+  justify-content: space-around;
+  padding-bottom: 25px;
+  height: 500px;
+}
+
+.box {
+  width: 300px;
+  text-align: center;
+  color: $or;
+  background-color: #4c4742;
+  box-shadow: 5px 5px 5px black;
+  font-size: 25px;
+}
+
+
+
