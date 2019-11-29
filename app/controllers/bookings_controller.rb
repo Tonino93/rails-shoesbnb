@@ -10,19 +10,20 @@ class BookingsController < ApplicationController
     bookings = []
     bookings = Booking.where(offer: offer)
     if bookings == []
-      raise
       @booking.save
       redirect_to dashboard_path
     else
-      bookings.each do |booking|
-        if ((@booking.start_date < booking.start_date && @booking.end_date < booking.start_date) || (@booking.start_date > booking.end_date && @booking.end_date > booking.end_date))
-          @booking.save
-          return redirect_to dashboard_path
-        else
-          flash[:notice] = "Ces dates sont déjà réservées"
-          return redirect_to offer_path(offer)
-        end
+    bookings.each do |booking|
+    #     # if ((@booking.start_date < booking.start_date && @booking.end_date < booking.start_date) || (@booking.start_date > booking.end_date && @booking.end_date > booking.end_date))
+      if ((@booking.start_date < booking.end_date && @booking.start_date > booking.start_date) || (@booking.end_date < booking.end_date && @booking.end_date > booking.start_date))
+        return redirect_to offer_path(offer)
+      elsif (@booking.start_date == booking.end_date || @booking.start_date == booking.start_date) && (@booking.end_date == booking.end_date || @booking.end_date == booking.start_date)
+        return redirect_to offer_path(offer)
+      else
+        @booking.save
+        return redirect_to dashboard_path
       end
+    end
     end
   end
 
