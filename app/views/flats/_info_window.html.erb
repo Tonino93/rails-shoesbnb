@@ -1,0 +1,3 @@
+<p><%= link_to offer.name, offer_path(offer) %></p>
+<p><%= link_to (cl_image_tag offer.photo, height: 100, width: 100, crop: :fill), offer_path(offer) %></p>
+<p><%= offer.address %></p>
