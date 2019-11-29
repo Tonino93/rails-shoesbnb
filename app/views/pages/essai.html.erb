@@ -1,5 +1,4 @@
 <div id="container">
-
   <div class="dashboard " style="background-image: url(<%= cl_image_path("chicnana_xi8cgi")%>)">
     <div class="d-flex ">
       <div class="ml-5">
@@ -15,9 +14,7 @@
         <h3>Mes annonces</h3>
         <% @bookings.each do |booking|%>
         <div class="card-product">
-          <p>
-          <%= link_to (cl_image_tag booking.offer.photo, height: 100, width: 100, crop: :fill), offer_path(booking) %>
-          </p>
+          <li><%= link_to (cl_image_tag booking.offer.photo, height: 100, width: 100, crop: :fill), offer_path(booking) %></li>
           <div class="card-product-infos">
             <h2><%= booking.user.username %></h2>
             <p>Date de début : <%= booking.start_date %></p>
@@ -30,9 +27,7 @@
         <h3>Mes réservations</h3>
         <% @mybookings.each do |mybooking|%>
         <div class="card-product">
-          <p
-          ><%= link_to (cl_image_tag mybooking.offer.photo, height: 100, width: 100, crop: :fill), offer_path(mybooking) %></p
-          >
+          <li><%= link_to (cl_image_tag mybooking.offer.photo, height: 100, width: 100, crop: :fill), offer_path(mybooking) %></li>
           <div class="card-product-infos">
             <h2><%= mybooking.user.username %></h2>
             <p>Date de début : <%= mybooking.start_date %></p>
@@ -43,28 +38,18 @@
       </div>
       <div class="box">
         <h3>Mes demandes</h3>
-        <div class="d-flex justify-content-around">
-
         <% @offers.each do |offer|%>
         <div class="card-product">
-          <p>
-          <%= link_to (cl_image_tag offer.photo, height: 100, width: 100, crop: :fill), offer_path(offer) %>
-          </p>
+          <li><%= link_to (cl_image_tag offer.photo, height: 100, width: 100, crop: :fill), offer_path(offer) %></li>
           <div class="card-product-infos">
-            <h2> <%= offer.name  %></h2>
-           <p>
-            <%= link_to "Update", edit_offer_path(offer), class: 'btn btn-primary p-1'%>
-           </p>
-           <p>
-            <%= link_to "Delete", offer_path(offer), method: :delete, data: { confirm: "Sur to delete?" }, class: 'btn btn-primary p-1 mb-4'%>
-          </p>
+            <h2></h2>
+            <p><%= link_to "Update", edit_offer_path(offer), class: 'btn btn-primary p-1'%></p>
+            <p><%= link_to "Delete", offer_path(offer), method: :delete, data: { confirm: "Sur to delete?" }, class: 'btn btn-primary p-1 mb-4'%></p>
           </div>
         </div>
         <% end %>
-        </div>
       </div>
     </div>
   </div>
 </div>
-
 

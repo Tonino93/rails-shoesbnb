@@ -1,6 +1,6 @@
 <div class="container">
   <div class="boite">
-  <h2 class="offer"> <%=  @offer.description %></h2> <!-- il faut ajouter un nom a notre offer !!! -->
+  <h2 class="offer"> <%=  @offer.name %></h2> <!-- il faut ajouter un nom a notre offer !!! -->
   <div class=" d-flex justify-content-around align-items-center ">
     <div class="section">
       <%= cl_image_tag @offer.photo, height: 400, width: 400, crop: :fill %>
