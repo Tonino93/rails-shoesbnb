@@ -1,3 +1,6 @@
+<div class="container">
+  <h2>Ajouter votre paire</h2>
+   <div class="container col-4 form-inputs">
 <%= simple_form_for(@offer) do |f| %>
   <%= f.input :name %>
   <%= f.input :brand %>
@@ -8,5 +11,9 @@
   <%= f.input :price_per_day %>
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
-  <%= f.button :submit, class: "btn btn-block" %>
+  <div class="d-flex justify-content-center">
+  <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
 <% end %>
+</div>
+</div>

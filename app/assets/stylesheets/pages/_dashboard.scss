@@ -11,14 +11,22 @@
 }
 
 .box {
-  width: 300px;
+  width: 500px;
   text-align: center;
   color: $or;
-  background-color: $gris;
-  box-shadow: 5px 5px 5px black;
+  background-color:rgba(76, 71, 66, 0.7);
   font-size: 25px;
+  border-radius:5px;
+  padding:15px;
+
 }
 
+.dashboard{
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:100vh;
+
+}
 
 
 
